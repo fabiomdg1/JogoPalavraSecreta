@@ -22,10 +22,9 @@ const stages = [
 
 function App() {   
 
-  const [gameStage, setGameStage] = useState(stages[0].name);
-  
+  const [gameStage, setGameStage] = useState(stages[0].name);  
 
-  // Lista de palavras
+  // Lista de palavras, neste caso não é usado setWords porque não precisamos de uma função para atualizar seu valor
   const [words] = useState(wordList);
 
   // Palavra que vai ser escolhida
@@ -35,33 +34,51 @@ function App() {
   const [pickedCategory, setPictureCategory] = useState("");
 
   // Letra que vai ser escolhida
-  const [letter, setLetters] = ("");
+  const [letters, setLetters] = ("");
 
 
   // Pega uma palavra e categoria aleatória
   const pickWordAndCategory = () =>{
     const categories = Object.keys(words); // Pega as chaves do objeto words
     const category = categories[Math.floor(Math.random() * Object.keys(categories).length)]; // Pega uma categoria aleatória
-    console.log(category);
-  }
+    //console.log(category);
 
+    const word = words[category][Math.floor(Math.random() * words[category].length)];
+    //console.log(word);
+
+    return { word, category };
+  }
 
   // Inicia o Jogo
   const startGame = () =>{
+    const { word, category } = pickWordAndCategory();
+    
+    // Criando um array de letras
+    let wordLetters = word.split("");
+    let wordLetter = wordLetters.map((l) => l.toLowerCase());
 
-    // Pegue uma palavra e uma categoria
+    console.log(wordLetter);
+
+    setPickedWord(word);
+    setPictureCategory(category);
+    setLetters(letters);
+
     pickWordAndCategory();
+
     setGameStage(stages[0].name);
+    //console.log("Start");
   }
 
   // Processa a letra digitada
   const verifyLetter = () =>{
     setGameStage(stages[1].name);
+    console.log("Game");
   }
 
   // Termina Jogo
   const gameOver = () =>{
     setGameStage(stages[2].name);
+    console.log("End");
   }
 
   // Reseta o Jogo
@@ -70,9 +87,13 @@ function App() {
     startGame();
   }
 
+  // useEffect(() => {
+  //   startGame(); // Chamada da função startGame() quando o componente é montado
+  // }, []); // O array de dependências está vazio, então a função será chamada apenas uma vez
+
+
   return (
     <div className="App">
-      {/* { gameStage === "start" && <StartScreen startGame = { startGame } /> } */}
       { gameStage === "start" && <StartScreen startGame = { verifyLetter } /> }
       { gameStage === "game" && <Game gameOver = { gameOver }/> }
       { gameStage === "end" && <GameOver retry = { retry }/> } 
