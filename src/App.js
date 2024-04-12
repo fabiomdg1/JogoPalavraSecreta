@@ -26,52 +26,43 @@ function App() {
 
   // Lista de palavras, neste caso não é usado setWords porque não precisamos de uma função para atualizar seu valor
   const [words] = useState(wordList);
-
-  // Palavra que vai ser escolhida
-  const [pickedWord, setPickedWord] = useState("");
-
-  // Categoria que vai ser escolhida
-  const [pickedCategory, setPictureCategory] = useState("");
-
-  // Letra que vai ser escolhida
-  const [letters, setLetters] = ("");
+  
+  const [pickedWord, setPickedWord] = useState("");            // Palavra que vai ser escolhida
+  const [pickedCategory, setPictureCategory] = useState("");   // Categoria que vai ser escolhida
+  const [letters, setLetters] = useState([]);                  // Letra que vai ser escolhida
 
 
-  // Pega uma palavra e categoria aleatória
   const pickWordAndCategory = () =>{
-    const categories = Object.keys(words); // Pega as chaves do objeto words
-    const category = categories[Math.floor(Math.random() * Object.keys(categories).length)]; // Pega uma categoria aleatória
-    //console.log(category);
-
-    const word = words[category][Math.floor(Math.random() * words[category].length)];
-    //console.log(word);
+    const categories = Object.keys(words);                                                     // Pega as chaves do objeto words
+    const category = categories[Math.floor(Math.random() * Object.keys(categories).length)];   // Pega uma categoria aleatória
+    const word = words[category][Math.floor(Math.random() * words[category].length)];          // Pega uma palavra aleatória da categoria acima
 
     return { word, category };
   }
 
   // Inicia o Jogo
   const startGame = () =>{
+
     const { word, category } = pickWordAndCategory();
     
-    // Criando um array de letras
-    let wordLetters = word.split("");
-    let wordLetter = wordLetters.map((l) => l.toLowerCase());
-
+    let wordLetters = word.split("");                                                   // Criando um array de letras
+    let wordLetter = wordLetters.map((l) => l.toLowerCase());                           // Convertendo para letras minúsculas
+    console.log(category);
     console.log(wordLetter);
 
+    // Atualiza o estado das tres variáveis (pickedWord, pickedCategory, letters)
     setPickedWord(word);
     setPictureCategory(category);
-    setLetters(letters);
+    setLetters(wordLetter);
 
-    pickWordAndCategory();
+   pickWordAndCategory();
 
-    setGameStage(stages[0].name);
-    //console.log("Start");
+    setGameStage(stages[1].name);
   }
 
   // Processa a letra digitada
   const verifyLetter = () =>{
-    setGameStage(stages[1].name);
+    setGameStage(stages[2].name);
     console.log("Game");
   }
 
@@ -94,8 +85,8 @@ function App() {
 
   return (
     <div className="App">
-      { gameStage === "start" && <StartScreen startGame = { verifyLetter } /> }
-      { gameStage === "game" && <Game gameOver = { gameOver }/> }
+      { gameStage === "start" && <StartScreen startGame = { startGame } /> }
+      { gameStage === "game" && <Game verifyLetter = { verifyLetter }/> }
       { gameStage === "end" && <GameOver retry = { retry }/> } 
     </div>
   );
