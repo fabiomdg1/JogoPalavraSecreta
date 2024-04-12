@@ -1,9 +1,9 @@
 import "./Game.css"
-const Game = ({ game }) =>{
+const Game = ({ gameOver }) =>{
     return (
         <div>
             <h1>Game</h1>
-            <button onClick={ game }>Jogar</button>            
+            <button onClick={ gameOver }>Jogar</button>            
         </div>
     );
 };

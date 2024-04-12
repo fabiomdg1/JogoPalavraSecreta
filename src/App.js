@@ -28,33 +28,53 @@ function App() {
   // Lista de palavras
   const [words] = useState(wordList);
 
+  // Palavra que vai ser escolhida
+  const [pickedWord, setPickedWord] = useState("");
+
+  // Categoria que vai ser escolhida
+  const [pickedCategory, setPictureCategory] = useState("");
+
+  // Letra que vai ser escolhida
+  const [letter, setLetters] = ("");
+
+
+  // Pega uma palavra e categoria aleatória
+  const pickWordAndCategory = () =>{
+    const categories = Object.keys(words); // Pega as chaves do objeto words
+    const category = categories[Math.floor(Math.random() * Object.keys(categories).length)]; // Pega uma categoria aleatória
+    console.log(category);
+  }
+
+
   // Inicia o Jogo
   const startGame = () =>{
+
+    // Pegue uma palavra e uma categoria
+    pickWordAndCategory();
     setGameStage(stages[0].name);
-    console.log("StartGame");
   }
 
   // Processa a letra digitada
   const verifyLetter = () =>{
     setGameStage(stages[1].name);
-    console.log("Verify Letter");
   }
 
   // Termina Jogo
   const gameOver = () =>{
     setGameStage(stages[2].name);
-    console.log("Game Over");
   }
 
   // Reseta o Jogo
   const retry = () =>{
-    setGameStage(stages[0].name);    
+    // setGameStage(stages[0].name);    
+    startGame();
   }
 
   return (
     <div className="App">
+      {/* { gameStage === "start" && <StartScreen startGame = { startGame } /> } */}
       { gameStage === "start" && <StartScreen startGame = { verifyLetter } /> }
-      { gameStage === "game" && <Game game = { gameOver }/> }
+      { gameStage === "game" && <Game gameOver = { gameOver }/> }
       { gameStage === "end" && <GameOver retry = { retry }/> } 
     </div>
   );
