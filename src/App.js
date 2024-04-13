@@ -66,8 +66,30 @@ function App() {
 
   // Processa a letra digitada
   const verifyLetter = (letter) =>{
-    console.log(letter);
-  }
+    const normalizedLetter = letter.toLowerCase();
+
+    // Verifica se a letra digitada já foi utilizada antes
+    if(guessedLetters.includes(normalizedLetter) || wrongLetters.includes(normalizedLetter)){
+      return;
+    }
+    
+    // Verifica se a letra está correta ou incorreta
+    if(letters.includes(normalizedLetter)){
+      setGuessedLetters((actualGuessedLetters) => [
+        ...actualGuessedLetters,
+        normalizedLetter
+      ])
+    } else {
+      setWrongLetters((actualGuessedLetters) => [
+        ...actualGuessedLetters,
+        normalizedLetter
+      ]);
+    }
+    console.log("Corretas: " + guessedLetters);
+    console.log("Incorretas: " + wrongLetters);
+  };
+
+  
 
   // Termina Jogo
   const gameOver = () =>{
