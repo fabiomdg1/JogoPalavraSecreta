@@ -30,6 +30,10 @@ function App() {
   const [pickedWord, setPickedWord] = useState("");            // Palavra que vai ser escolhida
   const [pickedCategory, setPictureCategory] = useState("");   // Categoria que vai ser escolhida
   const [letters, setLetters] = useState([]);                  // Letra que vai ser escolhida
+  const [guessedLetters, setGuessedLetters] = useState([]);    // Letras adivinhadas
+  const [wrongLetters, setWrongLetters] = useState([]);        // Letras erradas
+  const [guesses, setGuesses] = useState(3);                   // Quantidade de tentativas do usuário
+  const [score, setScore] = useState(0);                       // Pontuação do jogador
 
 
   const pickWordAndCategory = () =>{
@@ -61,9 +65,8 @@ function App() {
   }
 
   // Processa a letra digitada
-  const verifyLetter = () =>{
-    setGameStage(stages[2].name);
-    console.log("Game");
+  const verifyLetter = (letter) =>{
+    console.log(letter);
   }
 
   // Termina Jogo
@@ -78,15 +81,20 @@ function App() {
     startGame();
   }
 
-  // useEffect(() => {
-  //   startGame(); // Chamada da função startGame() quando o componente é montado
-  // }, []); // O array de dependências está vazio, então a função será chamada apenas uma vez
-
 
   return (
     <div className="App">
       { gameStage === "start" && <StartScreen startGame = { startGame } /> }
-      { gameStage === "game" && <Game verifyLetter = { verifyLetter }/> }
+      { gameStage === "game" && <Game 
+        verifyLetter = { verifyLetter } 
+        pickedWord={pickedWord} 
+        pickedCategory={pickedCategory} 
+        letters={letters}
+        guessedLetters={guessedLetters}
+        wrongLetters={wrongLetters}
+        guesses={guesses}
+        score={score}
+        /> }
       { gameStage === "end" && <GameOver retry = { retry }/> } 
     </div>
   );
