@@ -1,22 +1,24 @@
 import { useState, useRef } from "react";
 import "./Game.css";
-const Game = ({ 
-        verifyLetter,
-        pickedWord,
-        pickedCategory,
-        letters,
-        guessedLetters,
-        wrongLetters,
-        guesses,
-        score,
-    }) =>{
+// const Game = ({ 
+//         verifyLetter,
+//         pickedWord,
+//         pickedCategory,
+//         letters,
+//         guessedLetters,
+//         wrongLetters,
+//         guesses,
+//         score,
+//     }) =>{
+
+        const Game = (props) =>{
 
         const [letter, setLetter] = useState("");
         const letterInputRef = useRef(null);
 
         const handleSubmit = (e) => {
             e.preventDefault();
-            verifyLetter(letter);
+            props.verifyLetter(letter);
             setLetter("");
             letterInputRef.current.focus();
         }
@@ -25,17 +27,17 @@ const Game = ({
         <div>
             <div className="game">
                 <p className="points">
-                    <span>Pontuação: {score}</span>
+                    <span>Pontuação: {props.score}</span>
                 </p>
                 <h1>Adivinhe a palavra</h1>
                 <h3 className="tip">
-                    Dica sobre a palavra <span> {pickedCategory} </span>
+                    Dica sobre a palavra <span> {props.pickedCategory} </span>
                 </h3>
-                <p> Você ainda tem {guesses} tentativas</p>
+                <p> Você ainda tem {props.guesses} tentativas</p>
                 <div className="wordContainer">
 
-                {letters.map((letter, i) => (
-                    guessedLetters.includes(letter) ? (
+                {props.letters.map((letter, i) => (
+                    props.guessedLetters.includes(letter) ? (
                         <span key={i} className="letter"> {letter} </span>
                     ) : (
                         <span key={i} className="blankSquare"></span>
