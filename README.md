@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+## Jogo de Adivinhação de Palavras - React.js
+Este projeto consiste em um jogo simples desenvolvido em React.js, <br>
+onde o usuário tem que adivinhar uma palavra tendo uma dica e apenas 3 chances. <br>
+Cada vez que o usuário acerta uma letra, ele ganha 100 pontos. O projeto utiliza HTML, CSS e React.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Instruções de Instalação:
+Certifique-se de ter o Node.js instalado em seu sistema. Você pode baixá-lo em nodejs.org.
+Em seguida, clone este repositório para o seu computador utilizando o seguinte comando:
 
-## Available Scripts
+` git clone https://github.com/seu-usuario/nome-do-repositorio.git` <br>
 
-In the project directory, you can run:
+Navegue até o diretório do projeto:'' 
 
-### `npm start`
+Instale as dependências do projeto executando o seguinte comando: <br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+`npm install`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Após a instalação das dependências, você pode iniciar o servidor de desenvolvimento local com o seguinte comando:<br>
 
-### `npm test`
+`npm start`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+O jogo estará acessível em seu navegador no endereço http://localhost:3000.
 
-### `npm run build`
+## Como Jogar:
+1. Ao iniciar o jogo, uma palavra será escolhida aleatoriamente, juntamente com uma dica para ajudar o jogador a adivinhar.<br>
+2. O jogador tem 3 chances para adivinhar a palavra corretamente.<br>
+3. Na tela de jogo, o jogador pode digitar uma letra por vez na caixa de entrada e pressionar Enter para submeter a sua resposta.<br>
+4. Se o jogador acertar uma letra, ele ganha 100 pontos e pode continuar tentando adivinhar as letras restantes da palavra.<br>
+5. Se o jogador errar uma letra, suas chances restantes serão reduzidas em 1.<br>
+6. Se o jogador esgotar suas 3 chances sem adivinhar a palavra corretamente, o jogo termina.<br>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Como Jogar Online:
+Para jogar online e conhecer melhor o jogo, podemos clicar no link abaixo:<br>
+[Clique Aqui](https://jogodeadivinharpalavra.web.app)
+  
+## Tecnologias Utilizadas:
+* React.js
+* HTML
+* CSS
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
