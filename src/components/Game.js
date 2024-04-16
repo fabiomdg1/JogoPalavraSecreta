@@ -64,8 +64,7 @@ import "./Game.css";
                 </div>
                 <div className="wrongLettersContainer">
                     <p>Letras já utilizadas: </p>
-                    <span>a,</span>
-                    <span>b,</span>
+                    <span>{props.wrongLetters}</span>                    
                 </div>
             </div>
         </div>
