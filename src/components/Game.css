@@ -11,10 +11,13 @@
 }
 
 .wordContainer {
-    margin: 1.0em;
+    gap: 10px;    
     padding: 1.0em;
     border: 20px solid yellow;
-    display: flex;
+    display: grid;    
+    /* ocupa todo o quadro amarelo */
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));  
+
 }
 
 .letter, .blankSquare {
@@ -22,11 +25,11 @@
     line-height: 1.5;
     border: 3px solid black;
     height: 100px;
-    width: 100px;
     text-transform: uppercase;
     background-color: white;
     color: black;
     font-weight: bold;
+    text-align: center;
 }
 
 .letterContainer form {
