@@ -98,6 +98,7 @@ function App() {
   }, [guesses]);
 
   //------------------------------------------------------------------------------//
+  //---------------------------Pontuação do Jogo----------------------------------//
   useEffect(() => {
     (guessedLetters.length >= 1) && setScore(guessedLetters.length * 100)
   }, [guessedLetters])
@@ -105,6 +106,18 @@ function App() {
   console.log(gameStage);
 
   //------------------------------------------------------------------------------//
+  //------------------------------Caso de Vitória---------------------------------//
+  useEffect(() => {
+
+    const uniqueLetters = [... new Set(letters)];
+
+    if(guessedLetters.length === uniqueLetters.length){
+      startGame();
+    }
+  }, [guessedLetters]);
+
+
+
   return (
     <div className="App">
       { gameStage === "start" && <StartScreen startGame = { startGame } /> }
